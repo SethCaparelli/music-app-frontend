@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import queryString from "query-string"
 import SpotifyPlayer from "react-spotify-player"
-// import userArtists from "./UserArtists"
+import UserArtists from "./UserArtists"
 import '../App.css'
-import UserArtists from './UserArtists';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
+      userArtists: {
+        artists: {
+          items: []
+        }
+      },
       userData: {}
     }
   }
@@ -43,6 +47,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.userArtists)
     const size = {
       width: '100%',
       height: 300,
@@ -54,7 +59,7 @@ class App extends Component {
         {this.state.userData.email
           ? <div>
               <h1>Where the Music.at {this.state.userData.display_name}?</h1>
-              {/* <UserArtists details={this.state.UserArtists} /> */}
+              {this.state.userArtists.artists.items.map(item => {return <UserArtists userArtists={item} />})}
               <SpotifyPlayer
                   uri="spotify:artist:0334oJHhRSKJRHKpE9i62h"
                   size={size}
