@@ -14,8 +14,10 @@ class App extends Component {
           items: []
         }
       },
+      tourInfo: [],
       userData: {},
-      songToPlay: null
+      songToPlay: null,
+      popUp: false
     }
   }
 
@@ -72,7 +74,6 @@ class App extends Component {
   }
 
   render() {
-    let artists = this.state.userArtists.artists.items
     const size = {
       width: "100%",
       height: 300,
@@ -87,7 +88,8 @@ class App extends Component {
               <div>
                   <h2>Your Followed Artists</h2>
                 <div className="body">
-                  {artists.map(item => {return <Artist
+                  {this.state.userArtists.artists.items.map(item => {return <Artist
+                    tourInfo={this.state.tourInfo}
                     getTourInfo={this.getTourInfo}
                     playSong={this.playSong}
                     key={item.id}

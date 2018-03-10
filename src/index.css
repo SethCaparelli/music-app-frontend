@@ -89,33 +89,23 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 375px;
+  height: 400px;
   width: auto;
   margin: 0 20px;
 }
 
-.profile:hover > #icon {
+.profile:hover > .pop-up-icon {
   display: block;
+  cursor: pointer;
 }
 
 .profile:hover > #artist-image {
-  transform: scale(1.2)
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 #profile-icon:hover {
   color: rgb(0, 194,	61)
-}
-
-#icon {
-  display: none;
-  height: 70px;
-  width: 50px;
-  margin-bottom: 20px;
-}
-
-#icon:hover {
-  height: 80px;
-  width: 60px;
 }
 
 /* splash */
@@ -140,3 +130,59 @@ header {
   display: flex;
   flex-direction: column;
 }
+
+/* PopUp */
+
+/* .modal-text {
+  color: black;
+} */
+
+.pop-up-icon {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.pop-up-icon:hover > img {
+  height: 110%;
+  width: 110%;
+}
+
+#tour-info {
+  color: black;
+  height: 500px;
+  width: 500px;
+}
+
+/* .modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+} */
