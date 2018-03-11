@@ -14,6 +14,25 @@ header, footer {
   background-color: rgb(40,	40,	40);
 }
 
+#header-signout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#header-signout > span{
+  display: none;
+}
+
+#header-signout:hover > span{
+  display: flex;
+  cursor: pointer;
+}
+
+#header-signout:hover {
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -26,15 +45,24 @@ body {
 
 .body {
   display: flex;
-  justify-content: space-between ;
+  justify-content: space-around;
   overflow-y: scroll;
   margin: 50px;
   height: 100%;
   width: 100%;
 }
 
+h2 {
+  margin: 0;
+}
+
 h1 {
   margin: 0;
+}
+
+a {
+  color: none;
+  text-decoration: none;
 }
 
 /* buttons */
@@ -58,6 +86,19 @@ button {
   color: white;
 }
 
+#event-button {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+#event-button:hover {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
 /* images/icons */
 
 #artist-image {
@@ -74,8 +115,6 @@ button {
   color: black;
 }
 
-
-
 /* spotify player */
 
 #spotify-player {
@@ -87,7 +126,7 @@ button {
 .profile {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   height: 400px;
   width: auto;
@@ -107,6 +146,12 @@ button {
 #profile-icon:hover {
   color: rgb(0, 194,	61)
 }
+
+#get-tour-container {
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* splash */
 
@@ -133,56 +178,53 @@ header {
 
 /* PopUp */
 
-/* .modal-text {
-  color: black;
-} */
-
 .pop-up-icon {
   display: none;
   margin-bottom: 20px;
 }
 
-.pop-up-icon:hover > img {
-  height: 110%;
-  width: 110%;
+.pop-up-icon:hover > #get-tour-container > img {
+  transform: scale(1.1);
 }
 
-#tour-info {
+.pop-up-icon:hover > #get-tour-container > small {
+  transform: scale(1.1);
+}
+
+#tour {
+  color: black;
+  margin: 10px;
+}
+
+#tour-container {
   color: black;
   height: 500px;
   width: 500px;
+  overflow-y: scroll;
 }
 
-/* .modal {
-  font-size: 12px;
+#tour-container > h1 {
+  color: black;
 }
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 18px;
-  text-align: center;
-  padding: 5px;
+
+#tour {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: solid rgb(72, 13, 150) 2px;
+  background-color: rgb(105, 80, 197);
+  padding: 10px;
+  width: 88%;
+  height: inherit;
 }
-.modal > .content {
-  width: 100%;
-  padding: 10px 5px;
+
+#tour-unavail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: inherit;
 }
-.modal > .actions {
-  width: 100%;
-  padding: 10px 5px;
-  margin: auto;
-  text-align: center;
-}
-.modal > .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
-} */
+
+

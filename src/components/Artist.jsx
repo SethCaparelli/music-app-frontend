@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-// import PopUp from "./PopUp"
+import Event from "./Event"
 import Modal from "react-responsive-modal"
+import TourUnavail from './TourUnavail'
 
 class Artist extends Component {
     state = {
@@ -30,7 +31,6 @@ class Artist extends Component {
     }
 
     setTourInfo = (event) => {
-        console.log(event)
         const artist = this.props.userArtists.name
         this.props.getTourInfo(artist)
     }
@@ -38,12 +38,18 @@ class Artist extends Component {
     render() {
         const { openFirstModal, openSecondModal } = this.state;
         return (
-            <div className="profile" onClick={(e) => this.setTourInfo(e)}>
-                <div className="pop-up-icon">
-                    <img src="/assets/music@-icon-small.png" alt="icon" onClick={this.onOpenFirstModal}/>
+            <div className="profile" >
+                <div className="pop-up-icon" onClick={(e) => this.setTourInfo(e)}>
+                    <div id="get-tour-container">
+                        <small>Get Tour Info</small>
+                        <img src="/assets/music@-icon-small.png" alt="icon" onClick={this.onOpenFirstModal}/>
+                    </div>
                     <Modal open={openFirstModal} onClose={this.onCloseFirstModal} little>
-                        <div id="tour-info">
-                            <p>First modal</p>
+                        <div id="tour-container">
+                            {this.props.tourInfo.length < 1
+                                ? <TourUnavail />
+                                : this.props.tourInfo.map(event => <Event key={event.id} userArtists={this.props.userArtists} tourInfo={event} />)
+                            }
                         </div>
                         {/* <button className="btn btn-action" onClick={this.onOpenSecondModal}>
                         Open second modal

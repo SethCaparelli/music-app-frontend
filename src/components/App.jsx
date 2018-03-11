@@ -60,9 +60,12 @@ class App extends Component {
         return response.json()
       })
       .then(tourInfo => {
-        this.setState({
-          tourInfo
-        })
+        console.log(tourInfo)
+        if(tourInfo) {
+          this.setState({
+            tourInfo
+          })
+        }
       })
       .catch(error => console.log(error))
   }
