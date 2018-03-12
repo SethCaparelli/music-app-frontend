@@ -1,17 +1,121 @@
-/* meta styles */
+/* meta styles
+
+font-family: 'Timmana', sans-serif;
+font-family: 'Coda Caption', sans-serif;
+font-family: 'Shrikhand', cursive;
+font-family: 'Righteous', cursive;
+font-family: 'Russo One', sans-serif;
+font-family: 'Orbitron', sans-serif;
+font-family: 'Alfa Slab One', cursive;
+*/
+
+html, body, div, span, applet, object, iframe,blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
 
 html {
   height: 100%;
   width: 100%;
 }
 
-#main {
-  height: 100%;
-  width: 100%;
+body {
+  height: inherit;
+  width: inherit;
+  font-family: 'Orbitron', sans-serif;
+  background-color: white;
+  color: #2A2D34;
 }
 
-header, footer {
-  background-color: rgb(40,	40,	40);
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Coda Caption', sans-serif;
+  margin: 0;
+}
+
+p {
+  font-family: 'Timmana', sans-serif;
+  font-weight: 100;
+}
+
+#root {
+  height: inherit;
+  width: inherit;
+}
+
+.App {
+  height: inherit;
+  width: inherit;
+}
+
+#main {
+  height: inherit;
+  width: inherit;
+}
+
+.artist-body {
+  display: flex;
+  justify-content: space-between;
+  height: 70%;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+#user-header {
+  display: flex;
+  justify-content: center;
+  width: inherit;
+  margin-top: 1%;
+}
+
+a {
+  color: none;
+  text-decoration: none;
+}
+
+/*Header/Footer*/
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 12%;
+  width: 100%;
+  background-color: #2A2D34;
+  color: white;
+  position: relative;
+}
+
+header  h1 {
+  color: #8BD600
+}
+
+#header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2A2D34;
+  width: 100%;
+  height: 100%;
+  margin: 0 2%;
 }
 
 #header-signout {
@@ -20,11 +124,11 @@ header, footer {
   align-items: center;
 }
 
-#header-signout > span{
+#header-signout > span {
   display: none;
 }
 
-#header-signout:hover > span{
+#header-signout:hover > span {
   display: flex;
   cursor: pointer;
 }
@@ -33,36 +137,17 @@ header, footer {
   cursor: pointer;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: black;
-  color: white;
-  height: 100%;
-  width: 100%;
-}
-
-.body {
+footer {
   display: flex;
   justify-content: space-around;
-  overflow-y: scroll;
-  margin: 50px;
-  height: 100%;
+  align-items: center;
   width: 100%;
+  height: 10%;
 }
 
-h2 {
-  margin: 0;
-}
-
-h1 {
-  margin: 0;
-}
-
-a {
-  color: none;
-  text-decoration: none;
+.footer-link:hover {
+  color: #2547C0;
+  cursor: pointer;
 }
 
 /* buttons */
@@ -73,36 +158,80 @@ button:focus, input:focus {
 
 button {
   border: none;
+  font-family: 'Orbitron', sans-serif;
+  line-height: 150%;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 #splash-button {
-  width: 100px;
-  height: 50px;
+  width: 120px;
+  height: 80px;
   border-radius: 5px;
+  border: solid black 1px;
 }
 
 #splash-button:hover {
-  background-color: rgb(10, 10, 187);
+  background-color: #2547C0;
   color: white;
 }
 
 #event-button {
-  font-family: Arial, Helvetica, sans-serif;
   width: 100px;
   height: 50px;
   border-radius: 5px;
 }
 
 #event-button:hover {
-  background-color: blue;
+  background-color: #8BD600;
   color: white;
   cursor: pointer;
 }
 
 /* images/icons */
 
-#artist-image {
+#get-tour-icon {
+  height: 30%;
+  width: 25%;
+  position: relative;
+  margin-bottom: 2%;
+}
+
+.tour-icon-show {
   display: block;
+  cursor: pointer;
+}
+
+.tour-icon-hidden {
+  display: none;
+}
+
+#get-tour-container:hover > img {
+  transform: scale(1.1);
+}
+
+#artist-image-container {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+#play-icon {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  height: 40%;
+  width: 40%;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+#artist-image {
+  position: relative;
+  z-index: 0;
   width: 210px;
   height: 210px;
   border-radius: 5px;
@@ -115,10 +244,8 @@ button {
   color: black;
 }
 
-/* spotify player */
-
-#spotify-player {
-  position: fixed;
+#profile-icon:hover {
+  color: #8BD600;
 }
 
 /* profile */
@@ -126,30 +253,29 @@ button {
 .profile {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  height: 400px;
+  height: auto;
   width: auto;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 
-.profile:hover > .pop-up-icon {
+#artist-image-container:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#artist-image-container:hover > #play-icon {
   display: block;
-  cursor: pointer;
-}
-
-.profile:hover > #artist-image {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-#profile-icon:hover {
-  color: rgb(0, 194,	61)
 }
 
 #get-tour-container {
   display: flex;
   flex-direction: column;
+}
+
+#artist-name-small {
+  font-size: 12px;
 }
 
 
@@ -160,62 +286,56 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: inherit;
+  height: inherit;
+  background-color: #2A2D34;
+  color: white;
 }
 
-/* header */
-
-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-#header-signout {
-  display: flex;
-  flex-direction: column;
-}
-
-/* PopUp */
-
-.pop-up-icon {
-  display: none;
-  margin-bottom: 20px;
-}
-
-.pop-up-icon:hover > #get-tour-container > img {
-  transform: scale(1.1);
-}
-
-.pop-up-icon:hover > #get-tour-container > small {
-  transform: scale(1.1);
-}
+/* PopUp/Modal */
 
 #tour {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #2476C0;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+  color: white;
+}
+
+.tour-info {
+  border-bottom: solid black 1px;
+  width: 70%;
   color: black;
-  margin: 10px;
+}
+
+#event-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding-right: 1%;
+  position: fixed;
+  color: #8BD600;
+  background-color: white;
 }
 
 #tour-container {
   color: black;
+  background-color: #10426F;
   height: 500px;
-  width: 500px;
+  width: 100%;
   overflow-y: scroll;
 }
 
-#tour-container > h1 {
-  color: black;
+#get-tour-container small {
+  margin-bottom: 4px;
 }
 
-#tour {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  border: solid rgb(72, 13, 150) 2px;
-  background-color: rgb(105, 80, 197);
-  padding: 10px;
-  width: 88%;
-  height: inherit;
+#tour-container > h1 {
+  color: #2A2D34;
 }
 
 #tour-unavail {
@@ -225,6 +345,14 @@ header {
   align-items: center;
   width: inherit;
   height: inherit;
+  background-color: #2476C0;
 }
 
+#get-tour-container {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  width: inherit;
+  align-items: center;
+}
 

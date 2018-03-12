@@ -7,26 +7,45 @@ class Artist extends Component {
     state = {
         openFirstModal: false,
         openSecondModal: false,
+        iconHidden: true,
       };
 
-      onOpenFirstModal = () => {
-        this.setState({ openFirstModal: true });
-      };
+    showIcon = (event) => {
+        event.preventDefault()
+        this.setState({
+            iconHidden: false
+        })
+    }
 
-      onCloseFirstModal = () => {
+    hideIcon = (event) => {
+        event.preventDefault()
+        this.setState({
+            iconHidden: true
+        })
+    }
+
+    onOpenFirstModal = () => {
+        this.setState({
+            openFirstModal: true,
+            iconHidden: true
+        })
+    };
+
+    onCloseFirstModal = () => {
         this.setState({ openFirstModal: false });
-      };
+    };
 
-      onOpenSecondModal = () => {
+    onOpenSecondModal = () => {
         this.setState({ openSecondModal: true });
-      };
+    };
 
-      onCloseSecondModal = () => {
+    onCloseSecondModal = () => {
         this.setState({ openSecondModal: false });
-      };
+    };
 
     setSong = () => {
         const song = this.props.userArtists.uri
+        console.log(song)
         this.props.playSong(song)
     }
 
@@ -38,14 +57,17 @@ class Artist extends Component {
     render() {
         const { openFirstModal, openSecondModal } = this.state;
         return (
-            <div className="profile" >
-                <div className="pop-up-icon" onClick={(e) => this.setTourInfo(e)}>
+            <div onMouseEnter={(e) => this.showIcon(e)} onMouseLeave={(e) => this.hideIcon(e)}>
+                <div className={this.state.iconHidden ? "tour-icon-hidden" : "tour-icon-show"} onClick={(e) => this.setTourInfo(e)}>
                     <div id="get-tour-container">
                         <small>Get Tour Info</small>
-                        <img src="/assets/music@-icon-small.png" alt="icon" onClick={this.onOpenFirstModal}/>
+                        <img id="get-tour-icon" src="/assets/music@-icon.png" alt="icon" onClick={this.onOpenFirstModal}/>
                     </div>
                     <Modal open={openFirstModal} onClose={this.onCloseFirstModal} little>
                         <div id="tour-container">
+                            <div id="event-header">
+                                <h2>{this.props.userArtists.name}</h2>
+                            </div>
                             {this.props.tourInfo.length < 1
                                 ? <TourUnavail />
                                 : this.props.tourInfo.map(event => <Event key={event.id} userArtists={this.props.userArtists} tourInfo={event} />)
@@ -53,13 +75,18 @@ class Artist extends Component {
                         </div>
                         {/* <button className="btn btn-action" onClick={this.onOpenSecondModal}>
                         Open second modal
-                        </button> */}
+                    </button> */}
                     </Modal>
                     <Modal open={openSecondModal} onClose={this.onCloseSecondModal}>
                     </Modal>
                 </div>
-                <img id="artist-image" onClick={(e) => {this.setSong(e)}} src={this.props.userArtists.images[1].url} alt="artist"/>
-                <h2 onClick={(e) => {this.setTourInfo(e)}} id="artist-name">{this.props.userArtists.name}</h2>
+                <div className="profile" >
+                    <div id="artist-image-container" onClick={(e) => {this.setSong(e)}}>
+                        <i id="play-icon" className="fa fa-play-circle" aria-hidden="true"></i>
+                        <img id="artist-image" src={this.props.userArtists.images[1].url} alt="artist"/>
+                    </div>
+                    <h3 onClick={(e) => {this.setTourInfo(e)}} id={this.props.userArtists.name.length < 19 ? "artist-name" : "artist-name-small"}>{this.props.userArtists.name}</h3>
+                </div>
             </div>
         );
     }

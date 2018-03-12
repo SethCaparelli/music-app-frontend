@@ -3,6 +3,7 @@ import queryString from "query-string"
 import SpotifyPlayer from "react-spotify-player"
 import Artist from "./Artist"
 import Header from "./Header"
+import Footer from "./Footer"
 import Splash from "./Splash"
 
 class App extends Component {
@@ -71,6 +72,7 @@ class App extends Component {
   }
 
   playSong = (song) => {
+    console.log(song)
     this.setState({
       songToPlay: song
     })
@@ -88,9 +90,10 @@ class App extends Component {
         {this.state.userData.email
           ? <div id="main">
               <Header userData={this.state.userData} />
-              <div>
-                  <h2>Your Followed Artists</h2>
-                <div className="body">
+                <div id="user-header">
+                  <h2>{this.state.userData.display_name}'s Artists</h2>
+                </div>
+                <div className="artist-body">
                   {this.state.userArtists.artists.items.map(item => {return <Artist
                     tourInfo={this.state.tourInfo}
                     getTourInfo={this.getTourInfo}
@@ -100,7 +103,6 @@ class App extends Component {
                     })
                   }
                 </div>
-              </div>
                 <SpotifyPlayer
                     id="spotify-player"
                     uri={this.state.songToPlay}
@@ -108,9 +110,7 @@ class App extends Component {
                     view={view}
                     theme={theme}
                 />
-              <footer>
-                <small>Copyright Seth Caparelli</small>
-              </footer>
+                <Footer />
             </div>
           : <Splash />}
 
