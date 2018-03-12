@@ -61,7 +61,6 @@ class App extends Component {
         return response.json()
       })
       .then(tourInfo => {
-        console.log(tourInfo)
         if(tourInfo) {
           this.setState({
             tourInfo
@@ -72,7 +71,6 @@ class App extends Component {
   }
 
   playSong = (song) => {
-    console.log(song)
     this.setState({
       songToPlay: song
     })

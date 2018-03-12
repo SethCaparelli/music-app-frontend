@@ -338,6 +338,10 @@ button:hover {
   color: #2A2D34;
 }
 
+time {
+  font-family: 'Timmana', sans-serif;
+}
+
 #tour-unavail {
   display: flex;
   flex-direction: column;
