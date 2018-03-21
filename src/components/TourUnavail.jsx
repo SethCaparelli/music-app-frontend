@@ -5,7 +5,7 @@ class TourUnavail extends Component {
         return(
             <div id="tour-unavail">
                 <img src="/assets/music@-icon.png" alt="icon" />
-                <h3>Tour Info Unavailable</h3>
+                <h3>Tour Unavailable</h3>
             </div>
         )
     }

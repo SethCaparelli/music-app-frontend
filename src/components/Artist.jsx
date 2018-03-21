@@ -8,7 +8,7 @@ class Artist extends Component {
         openFirstModal: false,
         openSecondModal: false,
         iconHidden: true,
-      };
+      }
 
     showIcon = (event) => {
         event.preventDefault()
@@ -45,7 +45,6 @@ class Artist extends Component {
 
     setSong = () => {
         const song = this.props.userArtists.uri
-        console.log(song)
         this.props.playSong(song)
     }
 
@@ -60,13 +59,13 @@ class Artist extends Component {
             <div onMouseEnter={(e) => this.showIcon(e)} onMouseLeave={(e) => this.hideIcon(e)}>
                 <div className={this.state.iconHidden ? "tour-icon-hidden" : "tour-icon-show"} onClick={(e) => this.setTourInfo(e)}>
                     <div id="get-tour-container">
-                        <small>Get Tour Info</small>
+                        <small>Tour Info</small>
                         <img id="get-tour-icon" src="/assets/music@-icon.png" alt="icon" onClick={this.onOpenFirstModal}/>
                     </div>
                     <Modal open={openFirstModal} onClose={this.onCloseFirstModal} little>
                         <div id="tour-container">
                             <div id="event-header">
-                                <h2>{this.props.userArtists.name}</h2>
+                                <h2 id={this.props.userArtists.name.length > 10 ? "event-name-long" : "event-name"}>{this.props.userArtists.name}</h2>
                             </div>
                             {this.props.tourInfo.length < 1
                                 ? <TourUnavail />
@@ -83,9 +82,11 @@ class Artist extends Component {
                 <div className="profile" >
                     <div id="artist-image-container" onClick={(e) => {this.setSong(e)}}>
                         <i id="play-icon" className="fa fa-play-circle" aria-hidden="true"></i>
-                        <img id="artist-image" src={this.props.userArtists.images[1].url} alt="artist"/>
+                        {this.props.userArtists.images[0] ? <img id="artist-image" src={this.props.userArtists.images[1].url} alt="artist"/> : <i id="artist-image" class="fa fa-camera" aria-hidden="true"></i>}
                     </div>
-                    <h3 onClick={(e) => {this.setTourInfo(e)}} id={this.props.userArtists.name.length < 19 ? "artist-name" : "artist-name-small"}>{this.props.userArtists.name}</h3>
+                    <div id="artist-name-container">
+                        <h3 onClick={(e) => {this.setTourInfo(e)}} id={this.props.userArtists.name.length < 400 ? "artist-name" : "artist-name-small"}>{this.props.userArtists.name}</h3>
+                    </div>
                 </div>
             </div>
         );

@@ -5,6 +5,7 @@ import Artist from "./Artist"
 import Header from "./Header"
 import Footer from "./Footer"
 import Splash from "./Splash"
+import SearchForm from './SearchForm'
 
 class App extends Component {
   constructor() {
@@ -70,6 +71,24 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  searchSpot = (searchItem) => {
+    let parsed = queryString.parse(window.location.search)
+    let accessToken = parsed.access_token
+
+    fetch(`https://api.spotify.com/v1/search?q=${searchItem}&type=artist`, {
+      headers: {"Authorization": "Bearer " + accessToken}
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      console.log(data)
+      this.setState({
+        userArtists: data
+      })
+    })
+  }
+
   playSong = (song) => {
     this.setState({
       songToPlay: song
@@ -92,15 +111,17 @@ class App extends Component {
                   <h2>{this.state.userData.display_name}'s Artists</h2>
                 </div>
                 <div className="artist-body">
-                  {this.state.userArtists.artists.items.map(item => {return <Artist
-                    tourInfo={this.state.tourInfo}
-                    getTourInfo={this.getTourInfo}
-                    playSong={this.playSong}
-                    key={item.id}
-                    userArtists={item} />
+                  {this.state.userArtists.artists.items.map(item =>
+                    {return <Artist
+                      tourInfo={this.state.tourInfo}
+                      getTourInfo={this.getTourInfo}
+                      playSong={this.playSong}
+                      key={item.id}
+                      userArtists={item} />
                     })
                   }
                 </div>
+                <SearchForm searchSpot={this.searchSpot}/>
                 <SpotifyPlayer
                     id="spotify-player"
                     uri={this.state.songToPlay}
@@ -108,7 +129,9 @@ class App extends Component {
                     view={view}
                     theme={theme}
                 />
-                <Footer />
+                <div id="search-container">
+                  <Footer />
+                </div>
             </div>
           : <Splash />}
 

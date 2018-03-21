@@ -142,7 +142,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 10%;
+  height: 8%;
 }
 
 .footer-link:hover {
@@ -278,6 +278,10 @@ button:hover {
   font-size: 12px;
 }
 
+#artist-name-container {
+  height: 4px;
+  width: auto;
+}
 
 /* splash */
 
@@ -292,6 +296,10 @@ button:hover {
   color: white;
 }
 
+#splash-button {
+  margin-top: 4%;
+}
+
 /* PopUp/Modal */
 
 #tour {
@@ -302,20 +310,22 @@ button:hover {
   padding-left: 10px;
   padding-right: 10px;
   height: 100%;
+  width: 100%;
   color: white;
 }
 
 .tour-info {
-  border-bottom: solid black 1px;
+  border-bottom: solid #2A2D34 1px;
   width: 70%;
-  color: black;
+  color: #2A2D34;
 }
 
 #event-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 200px;
+  margin-right: auto;
   padding-right: 1%;
   position: fixed;
   color: #8BD600;
@@ -326,7 +336,7 @@ button:hover {
   color: black;
   background-color: #10426F;
   height: 500px;
-  width: 100%;
+  width: 300px;
   overflow-y: scroll;
 }
 
@@ -347,9 +357,11 @@ time {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: inherit;
+  width: auto;
   height: inherit;
   background-color: #2476C0;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #get-tour-container {
@@ -358,5 +370,44 @@ time {
   height: inherit;
   width: inherit;
   align-items: center;
+}
+
+#event-name-long {
+  font-size: 14px;
+}
+
+/* Search Form */
+
+#search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#search-input-hidden {
+  display: none;
+  background-color: #2A2D34;
+  color: white;
+  font-family: Circular,Helvetica,Arial,sans-serif;
+  font-size: inherit;
+}
+
+#search-icon {
+  height: 40px;
+  width: 40px;
+}
+
+#search-icon:hover {
+  cursor: pointer;
+  transform: scale(1.1)
+}
+
+#search-input {
+  display: flex;
+  background-color: #2A2D34;
+  color: white;
+  font-family: Circular,Helvetica,Arial,sans-serif;
+  font-size: inherit;
+  transition: all .5s ease;
 }
 
