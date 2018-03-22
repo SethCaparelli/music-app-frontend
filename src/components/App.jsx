@@ -110,15 +110,17 @@ class App extends Component {
                 <div id="user-header">
                   <h2>{this.state.userData.display_name}'s Artists</h2>
                 </div>
-                <div className="artist-body">
-                  {this.state.userArtists.artists.items.map(item =>
-                    {return <Artist
-                      tourInfo={this.state.tourInfo}
-                      getTourInfo={this.getTourInfo}
-                      playSong={this.playSong}
-                      key={item.id}
-                      userArtists={item} />
-                    })
+                <div className={this.state.userArtists.artists.items.length > 4 ? "artist-body" : "artist-body-small"}>
+                  {this.state.userArtists.artists.items.length > 1
+                    ? this.state.userArtists.artists.items.map(item =>
+                      {return <Artist
+                        tourInfo={this.state.tourInfo}
+                        getTourInfo={this.getTourInfo}
+                        playSong={this.playSong}
+                        key={item.id}
+                        userArtists={item} />
+                      })
+                    : <h3 id="search-again">No Artists, Please Search Again</h3>
                   }
                 </div>
                 <SearchForm searchSpot={this.searchSpot}/>

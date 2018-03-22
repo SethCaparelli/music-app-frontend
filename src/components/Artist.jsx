@@ -70,7 +70,7 @@ class Artist extends Component {
                             {this.props.tourInfo.length < 1
                                 ? <div id="loading">
                                     <div class="loader">Loading...</div>
-                                    <p>loading..</p>
+                                    <p>loading...</p>
                                   </div>
                                 : this.props.tourInfo.map(event => <Event key={event.id} userArtists={this.props.userArtists} tourInfo={event} />)
                             }

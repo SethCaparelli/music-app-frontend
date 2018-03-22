@@ -79,6 +79,14 @@ p {
   overflow-y: scroll;
 }
 
+.artist-body-small {
+  display: flex;
+  justify-content: center;
+  height: 70%;
+  align-items: center;
+  overflow-y: scroll;
+}
+
 #user-header {
   display: flex;
   justify-content: center;
@@ -89,6 +97,10 @@ p {
 a {
   color: none;
   text-decoration: none;
+}
+
+#search-again {
+  color: red;
 }
 
 /*Header/Footer*/
@@ -298,6 +310,7 @@ button:hover {
   width: 40%;
   opacity: 0.8;
   z-index: 1;
+  color: #8BD600;
 }
 
 #artist-image {
