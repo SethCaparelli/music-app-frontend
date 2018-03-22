@@ -56,6 +56,39 @@ class App extends Component {
     .catch(error => console.log(error))
   }
 
+  getUserArtists = () => {
+    let parsed = queryString.parse(window.location.search)
+    let accessToken = parsed.access_token
+
+    fetch("https://api.spotify.com/v1/me", {
+      headers: {"Authorization": "Bearer " + accessToken}
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      this.setState({
+        userData: data
+      })
+    })
+
+    fetch("https://api.spotify.com/v1/me/following?type=artist", {
+      headers: {"Authorization": "Bearer " + accessToken}
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      this.setState({
+        userArtists: data
+      })
+      if (data && data.artists && data.artists.items && data.artists.items.length > 0) {
+        this.playSong(data.artists.items[0].uri)
+      }
+    })
+    .catch(error => console.log(error))
+  }
+
   getTourInfo = (artist) => {
     fetch(`https://rest.bandsintown.com/artists/${artist}/events?app_id=Music.at`, {mode: "cors"})
       .then(response => {
@@ -107,7 +140,7 @@ class App extends Component {
         {this.state.userData.email
           ? <div id="main">
               <Header userData={this.state.userData} />
-                <div id="user-header">
+                <div id="user-header" onClick={this.getUserArtists}>
                   <h2>{this.state.userData.display_name}'s Artists</h2>
                 </div>
                 <div className={this.state.userArtists.artists.items.length > 4 ? "artist-body" : "artist-body-small"}>
