@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Event from "./Event"
 import Modal from "react-responsive-modal"
-import TourUnavail from './TourUnavail'
+// import TourUnavail from './TourUnavail'
 
 class Artist extends Component {
     state = {
@@ -68,7 +68,10 @@ class Artist extends Component {
                                 <h2 id={this.props.userArtists.name.length > 10 ? "event-name-long" : "event-name"}>{this.props.userArtists.name}</h2>
                             </div>
                             {this.props.tourInfo.length < 1
-                                ? <TourUnavail />
+                                ? <div id="loading">
+                                    <div class="loader">Loading...</div>
+                                    <p>loading..</p>
+                                  </div>
                                 : this.props.tourInfo.map(event => <Event key={event.id} userArtists={this.props.userArtists} tourInfo={event} />)
                             }
                         </div>
