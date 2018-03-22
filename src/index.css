@@ -29,6 +29,12 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+a {
+  color: #2A2D34;
+  border-bottom-color: #2A2D34;
+  border-left-color: #2A2D34;
+}
+
 html {
   height: 100%;
   width: 100%;
@@ -164,9 +170,25 @@ footer {
   height: 8%;
 }
 
+.footer-link {
+  color: inherit;
+}
+
 .footer-link:hover {
   color: #2547C0;
   cursor: pointer;
+}
+
+footer h4 {
+  margin-left: 5%;
+}
+
+footer h4:nth-child(3) {
+  margin-right: 5%;
+}
+
+h4:nth-child(2) {
+  margin-left: auto;
 }
 
 /* buttons */
@@ -362,7 +384,6 @@ button:hover {
 #get-tour-container {
   display: flex;
   justify-content: space-between;
-  /* position: relative; */
   flex-direction: column;
   height: auto;
   width: auto;
