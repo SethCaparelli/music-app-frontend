@@ -16,7 +16,6 @@ class SearchForm extends Component {
     }
 
     toggleSearch = (event) => {
-        console.log(event)
         this.setState({
             showSearch: !this.state.showSearch
         })

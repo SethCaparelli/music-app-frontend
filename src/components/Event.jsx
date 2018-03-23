@@ -5,7 +5,7 @@ class Event extends Component {
     render(){
         const tourInfo = this.props.tourInfo
         const date = tourInfo.datetime
-        console.log(date)
+        console.log(tourInfo.url)
         return(
             <div id="tour">
                 <div id="name">
@@ -20,7 +20,7 @@ class Event extends Component {
                     <h3 className="tour-info"><i className="fa fa-globe" aria-hidden="true"></i> Location</h3>
                     <p>{tourInfo.venue.city}, {tourInfo.venue.region} {tourInfo.venue.country}</p>
                 </div>
-                <button onClick={() => window.location = tourInfo.url} id="event-button">Buy Tickets</button>
+                <button onClick={() => window.open(tourInfo.url, "_blank")} id="event-button">Buy Tickets</button>
             </div>
         )
     }

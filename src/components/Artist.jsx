@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Event from "./Event"
 import Modal from "react-responsive-modal"
-// import TourUnavail from './TourUnavail'
+import TourUnavail from './TourUnavail'
 
 class Artist extends Component {
     state = {
@@ -69,10 +69,10 @@ class Artist extends Component {
                             </div>
                             {this.props.tourInfo.length < 1
                                 ? <div id="loading">
-                                    <div class="loader">Loading...</div>
+                                    <div className="loader">Loading...</div>
                                     <p>loading...</p>
                                   </div>
-                                : this.props.tourInfo.map(event => <Event key={event.id} userArtists={this.props.userArtists} tourInfo={event} />)
+                                : this.props.tourInfo === false ? <TourUnavail /> : this.props.tourInfo.map(event => <Event key={event.id} userArtists={this.props.userArtists} tourInfo={event} />)
                             }
                         </div>
                         {/* <button className="btn btn-action" onClick={this.onOpenSecondModal}>
@@ -85,7 +85,7 @@ class Artist extends Component {
                 <div className="profile" >
                     <div id="artist-image-container" onClick={(e) => {this.setSong(e)}}>
                         <i id="play-icon" className="fa fa-play-circle" aria-hidden="true"></i>
-                        {this.props.userArtists.images[0] ? <img id="artist-image" src={this.props.userArtists.images[1].url} alt="artist"/> : <i id="artist-image" class="fa fa-camera" aria-hidden="true"></i>}
+                        {this.props.userArtists.images[0] ? <img id="artist-image" src={this.props.userArtists.images[1].url} alt="artist"/> : <i id="artist-image" className="fa fa-camera" aria-hidden="true"></i>}
                     </div>
                     <div id="artist-name-container">
                         <h3 onClick={(e) => {this.setTourInfo(e)}} id={this.props.userArtists.name.length < 400 ? "artist-name" : "artist-name-small"}>{this.props.userArtists.name}</h3>

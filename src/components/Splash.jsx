@@ -11,7 +11,8 @@ class Splash extends Component {
                 </p>
                 <button
                     onClick={() => window.location = "http://localhost:8888/login"/*"https://blooming-gorge-11355.herokuapp.com/login"*/}
-                    id="splash-button">
+                    id="splash-button"
+                >
                     <b>Sign In With Spotify</b>
                 </button>
             </div>

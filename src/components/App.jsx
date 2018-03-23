@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 import queryString from "query-string"
 import SpotifyPlayer from "react-spotify-player"
 import Artist from "./Artist"
 import Header from "./Header"
 import Footer from "./Footer"
 import Splash from "./Splash"
-import SearchForm from './SearchForm'
+import SearchForm from "./SearchForm"
 
 class App extends Component {
   constructor() {
@@ -90,16 +90,25 @@ class App extends Component {
   }
 
   getTourInfo = (artist) => {
+    this.setState({
+      tourInfo: []
+    })
     fetch(`https://rest.bandsintown.com/artists/${artist}/events?app_id=Music.at`, {mode: "cors"})
       .then(response => {
         return response.json()
       })
       .then(tourInfo => {
-        if(tourInfo) {
-          this.setState({
-            tourInfo
-          })
-        }
+        setTimeout(() => {
+          if(tourInfo.length >= 1) {
+            this.setState({
+              tourInfo
+            })
+          } else {
+            this.setState({
+              tourInfo: false
+            })
+          }
+        }, 1500)
       })
       .catch(error => console.log(error))
   }
@@ -115,7 +124,6 @@ class App extends Component {
       return response.json()
     })
     .then(data => {
-      console.log(data)
       this.setState({
         userArtists: data
       })
@@ -133,8 +141,8 @@ class App extends Component {
       width: "100%",
       height: 300,
     };
-    const view = 'list'
-    const theme = 'black'
+    const view = "list"
+    const theme = "black"
     return (
       <div className="App">
         {this.state.userData.email
@@ -144,7 +152,7 @@ class App extends Component {
                   <h2>{this.state.userData.display_name}'s Artists</h2>
                 </div>
                 <div className={this.state.userArtists.artists.items.length > 4 ? "artist-body" : "artist-body-small"}>
-                  {this.state.userArtists.artists.items.length > 1
+                  {this.state.userArtists.artists.items.length > 0
                     ? this.state.userArtists.artists.items.map(item =>
                       {return <Artist
                         tourInfo={this.state.tourInfo}
@@ -153,7 +161,7 @@ class App extends Component {
                         key={item.id}
                         userArtists={item} />
                       })
-                    : <h3 id="search-again">No Artists, Please Search Again</h3>
+                    : <h3 id="search-again">No Artists. Please Search Again, or Click Your Name Above</h3>
                   }
                 </div>
                 <SearchForm searchSpot={this.searchSpot}/>

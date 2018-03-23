@@ -4,8 +4,8 @@ class TourUnavail extends Component {
     render(){
         return(
             <div id="tour-unavail">
-                {/* <img src="/assets/music@-icon.png" alt="icon" /> */}
-                <h3>Sorry, Tour Unavailable</h3>
+                <img id="not-touring-icon" src="/assets/not-touring-symbol.png" alt="not-touring"/>
+                <h3>Sorry, This Artist Is Not Touring</h3>
             </div>
         )
     }
