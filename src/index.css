@@ -316,7 +316,7 @@ button:hover {
 }
 
 .tour-icon-show {
-  display: inline-block;
+  display: block;
   cursor: pointer;
 }
 
@@ -513,8 +513,9 @@ time {
 #get-tour-container {
   display: flex;
   flex-direction: column;
-  height: inherit;
-  width: inherit;
+  justify-content: center;
+  height: auto;
+  width: auto;
   align-items: center;
 }
 
