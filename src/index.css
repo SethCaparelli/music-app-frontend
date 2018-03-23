@@ -41,8 +41,8 @@ html {
 }
 
 body {
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
   font-family: 'Orbitron', sans-serif;
   background-color: white;
   color: #2A2D34;
@@ -63,18 +63,18 @@ p {
 }
 
 #root {
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
 }
 
 .App {
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
 }
 
 #main {
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
 }
 
 .artist-body {
@@ -298,28 +298,26 @@ button:hover {
   }
 }
 
+#get-tour-container:hover {
+  transform: scale(1.2);
+  transition: all 500ms;
+  position: relative;
+  z-index: 1;
+
+}
+
 #get-tour-icon {
   height: 30%;
   width: 25%;
-  position: relative;
-  margin-bottom: 2%;
-  margin-top: 3px;
-  z-index: 1000;
 }
 
 .tour-icon-show {
-  display: block;
+  display: inline-block;
   cursor: pointer;
 }
 
 .tour-icon-hidden {
   display: none;
-}
-
-#get-tour-container:hover > img {
-  transform: scale(1.1);
-  transition: all 500ms;
-  margin-top: 10px;
 }
 
 #artist-image-container {
@@ -356,7 +354,7 @@ button:hover {
 
 #profile-icon:hover {
   color: #8BD600;
-  transition: all 500ms;
+  /* transition: all 500ms; */
 }
 
 /* profile */
@@ -405,14 +403,24 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: inherit;
-  height: inherit;
+  width: 100%;
+  height: 100%;
   background-color: #2A2D34;
   color: white;
 }
 
+#splash-body p {
+  /* margin: 0 18%; */
+  height: auto;
+  width: 60%;
+}
+
 #splash-button {
   margin-top: 4%;
+}
+
+#splash-header {
+  color: #8BD600;
 }
 
 /* PopUp/Modal */
