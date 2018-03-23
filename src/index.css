@@ -500,6 +500,7 @@ time {
 }
 
 #tour-unavail h3 {
+  margin-bottom: 0;
   text-align: center;
   color: white;
 }
