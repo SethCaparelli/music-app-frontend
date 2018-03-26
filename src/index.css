@@ -201,6 +201,7 @@ button:focus, input:focus {
 
 button {
   border: none;
+  background-color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   line-height: 150%;
 }
@@ -360,6 +361,10 @@ button:hover {
   color: #8BD600;
 }
 
+#splash-logo {
+  height: 180px;
+  width: 120px;
+}
 /* profile */
 
 .profile {
