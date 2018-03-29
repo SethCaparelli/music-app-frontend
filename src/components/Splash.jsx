@@ -10,7 +10,7 @@ class Splash extends Component {
                     so that they can see their favorite artist's tour schedule. Users are also able to search and play other artists.
                 </p>
                 <button
-                    onClick={() => window.location = "https://blooming-gorge-11355.herokuapp.com/login"}
+                    onClick={() => window.location = "http://localhost:8888/login"/*"https://blooming-gorge-11355.herokuapp.com/login"*/}
                     id="splash-button"
                 >
                     <b>Sign In With Spotify</b>

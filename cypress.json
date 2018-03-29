@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://localhost:3000",
+    "baseUrl": "http://music-at.surge.sh",
     "integrationFolder": "tests",
     "screenshotsFolder": "tests/screenshots",
     "videosFolder": "tests/recordings",
